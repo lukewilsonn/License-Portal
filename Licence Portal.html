@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACAA License Portal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/Users/lukewilson/Projects/SACAA Website/andres-dallimonti-kjqTlMHLci4-unsplash.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 40px);
+            color: #333;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for readability */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #005a9c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #00467f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SACAA License Portal</h1>
+        <input type="text" id="numberInput" placeholder="Enter number (with or without first 3 digits)">
+        <button onclick="redirectToUrl()">Submit</button>
+    </div>
+
+    <script>
+        function redirectToUrl() {
+            let number = document.getElementById('numberInput').value.trim();
+            const baseUrl = "https://personellicensing.caa.co.za/CAALicense/caaLicense?lno=";
+            
+            if (number && !isNaN(number)) {
+                if (number.length > 7) {
+                    number = number.substring(number.length - 3);
+                }
+                window.location.href = baseUrl + number;
+            } else {
+                alert('Please enter a valid number.');
+            }
+        }
+
+        // Listen for Enter key press on the input field
+        document.getElementById('numberInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                redirectToUrl();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
